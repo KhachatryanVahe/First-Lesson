@@ -23,7 +23,7 @@ jobs:
             echo ========HOSTNAME====== $HOSTNAME
             echo ========USER_NAME====== $USER_NAME
             echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-            ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} "sudo apt install apache2"
+            ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} "sudo apt install -y apache2"
 
             scp -o StrictHostKeyChecking=no -i private_key -r * ${USER_NAME}@${HOSTNAME}:/home/ubuntu
             ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
