@@ -17,7 +17,7 @@ jobs:
           USER_NAME: ${{secrets.USER_NAME}}
         run: |
           ls -ltha
-          printenv
+          echo ============== $PRIVATE_KEY $HOSTNAME $USER_NAME
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} "sudo apt install apache2"
           scp -o StrictHostKeyChecking=no -i private_key -r * ${USER_NAME}@${HOSTNAME}:/home/ubuntu
